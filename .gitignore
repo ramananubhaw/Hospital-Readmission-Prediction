@@ -1,0 +1,5 @@
+.env
+/myenv
+/models
+/catboost_info
+/data

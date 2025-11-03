@@ -1,0 +1,8 @@
+numpy
+pandas
+ipykernel
+scikit-learn
+matplotlib
+xgboost
+catboost
+python-dotenv
