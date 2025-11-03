@@ -5,6 +5,9 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OneHotEncoder, OrdinalEncoder, LabelEncoder, MinMaxScaler
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.getcwd(), '..')))
+from utils.sanitize_column_names import sanitize_column_names
 
 # %%
 load_dotenv()
@@ -424,9 +427,9 @@ X_test[numerical_features] = scaler.transform(X_test[numerical_features])
 # X_test # Output/Display Line
 
 # %%
-def sanitize_column_names(df):
-    df.columns = df.columns.str.strip().str.lower().str.replace(' ', '_').str.replace('[', '').str.replace(')', '')
-    return df
+# def sanitize_column_names(df):
+#     df.columns = df.columns.str.strip().str.lower().str.replace(' ', '_').str.replace('[', '').str.replace(')', '')
+#     return df
 
 # %%
 X_train = sanitize_column_names(X_train)

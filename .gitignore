@@ -1,5 +1,6 @@
 .env
 /myenv
 /models
-/catboost_info
 /data
+/*/catboost_info
+/*/__pycache__

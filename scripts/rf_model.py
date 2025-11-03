@@ -3,17 +3,12 @@ import os
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 import numpy as np
-from sklearn.metrics import (
-    accuracy_score,
-    precision_score,
-    recall_score,
-    f1_score,
-    roc_auc_score,
-    confusion_matrix,
-)
 from sklearn.model_selection import GridSearchCV
 import time
 import joblib
+import sys
+sys.path.append(os.path.abspath(os.path.join(os.getcwd(), '..')))
+from utils.evaluate_model import evaluate_model
 
 # %%
 X_train = pd.read_csv('../data/train_features.csv')
@@ -37,15 +32,6 @@ y_test = pd.read_csv('../data/test_labels.csv').squeeze()
 
 # %%
 # X_train.columns # Output/Display Line
-
-# %%
-def sanitize_column_names(df):
-    df.columns = df.columns.str.strip().str.lower().str.replace(' ', '_').str.replace('[', '').str.replace(')', '')
-    return df
-
-# %%
-sanitize_column_names(X_train)
-sanitize_column_names(X_test)
 
 # %%
 # X_train.columns # Output/Display Line
@@ -77,37 +63,8 @@ y_pred_proba = model.predict_proba(X_test)[:, 1]
 # y_pred_proba # Output/Display Line
 
 # %%
-def evaluate_model(model):
-    y_pred_class = model.predict(X_test)
-    y_pred_proba = model.predict_proba(X_test)[:, 1]
-    
-    accuracy = accuracy_score(y_test, y_pred_class)
-    precision = precision_score(y_test, y_pred_class)
-    recall = recall_score(y_test, y_pred_class)
-    f1 = f1_score(y_test, y_pred_class)
-    roc_auc = roc_auc_score(y_test, y_pred_proba)
-    cm = confusion_matrix(y_test, y_pred_class)
-    cm_df = pd.DataFrame(
-        cm,
-        index=['Actual No Readmission (0)', 'Actual Readmission (1)'],
-        columns=['Predicted No Readmission (0)', 'Predicted Readmission (1)']
-    )
-    
-    print(f"Accuracy: {accuracy:.4f}")
-    print(f"Precision: {precision:.4f}")
-    print(f"Recall (Sensitivity): {recall:.4f}")
-    print(f"F1 Score: {f1:.4f}")
-    print(f"ROC-AUC: {roc_auc:.4f}")
-    print("Confusion Matrix:")
-    print(cm_df)
-    print("\nInterpretation of Confusion Matrix:")
-    print(f"  True Negatives (TN): {cm[0, 0]} (Correctly predicted NOT readmitted)")
-    print(f"  False Positives (FP): {cm[0, 1]} (Incorrectly predicted readmitted - Resource Waste)")
-    print(f"  False Negatives (FN): {cm[1, 0]} (Incorrectly predicted NOT readmitted - Missed Intervention)")
-    print(f"  True Positives (TP): {cm[1, 1]} (Correctly predicted readmitted)")
-
-# %%
-evaluate_model(model)
+result = evaluate_model(model, X_test, y_test, "RandomForestClassifier", False)
+print(result)
 
 # %%
 # y_train[y_train == 0].count() / y_train.count() # Output/Display Line
@@ -194,7 +151,8 @@ y_test_pred_class = best_rf_model.predict(X_test)
 
 # %%
 print('\nBest Random Forest Model Evaluation on Test Set:')
-evaluate_model(best_rf_model)
+result = evaluate_model(best_rf_model, X_test, y_test, "RandomForestClassifier", True)
+print(result)
 
 # %% [markdown]
 # ### Saving the model

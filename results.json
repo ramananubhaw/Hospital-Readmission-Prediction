@@ -1,0 +1,58 @@
+{
+    "CatBoostClassifier": {
+        "model_name": "CatBoostClassifier",
+        "Accuracy": 0.6168,
+        "Precision": 0.5987381703470032,
+        "Recall (Sensitivity)": 0.5422857142857143,
+        "F1_Score": 0.5691154422788606,
+        "ROC_AUC": 0.6616489999999999,
+        "Confusion_Matrix_Values": {
+            "True Negatives (TN)": 2728,
+            "False Positives (FP)": 1272,
+            "False Negatives (FN)": 1602,
+            "True Positives (TP)": 1898
+        }
+    },
+    "LogisticRegression": {
+        "model_name": "LogisticRegression",
+        "Accuracy": 0.6129333333333333,
+        "Precision": 0.6000670465973852,
+        "Recall (Sensitivity)": 0.5114285714285715,
+        "F1_Score": 0.5522134814129261,
+        "ROC_AUC": 0.6456361428571429,
+        "Confusion_Matrix_Values": {
+            "True Negatives (TN)": 2807,
+            "False Positives (FP)": 1193,
+            "False Negatives (FN)": 1710,
+            "True Positives (TP)": 1790
+        }
+    },
+    "XGBoost": {
+        "model_name": "XGBoost",
+        "Accuracy": 0.6181333333333333,
+        "Precision": 0.5983910891089109,
+        "Recall (Sensitivity)": 0.5525714285714286,
+        "F1_Score": 0.5745692216280451,
+        "ROC_AUC": 0.6573102142857143,
+        "Confusion_Matrix_Values": {
+            "True Negatives (TN)": 2702,
+            "False Positives (FP)": 1298,
+            "False Negatives (FN)": 1566,
+            "True Positives (TP)": 1934
+        }
+    },
+    "RandomForestClassifier": {
+        "model_name": "RandomForestClassifier",
+        "Accuracy": 0.6158666666666667,
+        "Precision": 0.6149275900482734,
+        "Recall (Sensitivity)": 0.47314285714285714,
+        "F1_Score": 0.5347973518488616,
+        "ROC_AUC": 0.6595712142857142,
+        "Confusion_Matrix_Values": {
+            "True Negatives (TN)": 2963,
+            "False Positives (FP)": 1037,
+            "False Negatives (FN)": 1844,
+            "True Positives (TP)": 1656
+        }
+    }
+}
