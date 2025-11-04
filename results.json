@@ -54,5 +54,19 @@
             "False Negatives (FN)": 1844,
             "True Positives (TP)": 1656
         }
+    },
+    "SVM": {
+        "model_name": "SVM",
+        "Accuracy": 0.6046666666666667,
+        "Precision": 0.6033217458478177,
+        "Recall (Sensitivity)": 0.4462857142857143,
+        "F1_Score": 0.5130563310888487,
+        "ROC_AUC": 0.6386632857142858,
+        "Confusion_Matrix_Values": {
+            "True Negatives (TN)": 2973,
+            "False Positives (FP)": 1027,
+            "False Negatives (FN)": 1938,
+            "True Positives (TP)": 1562
+        }
     }
 }
